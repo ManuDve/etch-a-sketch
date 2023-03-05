@@ -55,7 +55,7 @@ document.addEventListener("touchmove", (event)=>{
     let y = event.touches[0].clientY;
     event.preventDefault();
     let selectedDiv = document.elementFromPoint(x, y);
-    if (selectedDiv != null && selectedDiv.outerHTML == "<div></div>") {
+    if (selectedDiv != null && selectedDiv.parentElement.id == "divcontainer") {
         changeColor(selectedDiv);
     }
 }, false)
@@ -69,3 +69,5 @@ inputColor.addEventListener("change", pickColor)
 
 createGrid(gridSize);
 updateGridPlaceholder();
+
+// Solucionar regla ID
