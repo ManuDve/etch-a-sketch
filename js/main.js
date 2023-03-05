@@ -46,6 +46,9 @@ function createGrid(size) {
         div.addEventListener("mouseenter", ()=> {
             changeColor(div);
         })
+        div.addEventListener("touchstart", ()=> {
+            changeColor(div);
+        })
     }
 }
 button.addEventListener("click", changeGridSize)
