@@ -28,6 +28,8 @@ body {
           flex-direction: column;
   background-color: var(--bgcolor);
   font-family: Arial, Helvetica, sans-serif;
+  -ms-touch-action: none;
+      touch-action: none;
 }
 
 input[type=text], button {
@@ -94,6 +96,8 @@ input[type=text], button {
           transform: scale(1.05);
 }
 #menu div {
+  -ms-touch-action: none;
+      touch-action: none;
   -webkit-transform: 500ms;
           transform: 500ms;
   width: 2em;
