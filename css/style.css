@@ -90,12 +90,20 @@ input[type=text], button {
 #menu button:hover {
   color: #03ffbc;
   border: #03ffbc 1px solid;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 #menu div {
+  -webkit-transform: 500ms;
+          transform: 500ms;
   width: 2em;
   height: 2em;
   border-radius: 100%;
   overflow: hidden;
+}
+#menu div:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 #menu input[type=color] {
   border: 0;
