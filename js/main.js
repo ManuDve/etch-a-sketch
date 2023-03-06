@@ -50,15 +50,16 @@ function createGrid(size) {
     }
 }
 
-document.addEventListener("touchmove", (event)=>{
+divContainer.addEventListener("touchmove", (event)=>{
+    event.preventDefault();
     let x = event.touches[0].clientX;
     let y = event.touches[0].clientY;
-    event.preventDefault();
     let selectedDiv = document.elementFromPoint(x, y);
     if (selectedDiv != null && selectedDiv.parentElement.id == "divcontainer") {
         changeColor(selectedDiv);
     }
 }, false)
+
 
 
 button.addEventListener("click", changeGridSize)
@@ -69,5 +70,21 @@ inputColor.addEventListener("change", pickColor)
 
 createGrid(gridSize);
 updateGridPlaceholder();
+document.ondblclick = function(e) {
+    e.preventDefault();
+}
 
-// Solucionar regla ID
+/* divContainer.childNodes.forEach(element => {
+    element.addEventListener("touchmove", function evento(event) {
+    event.preventDefault();
+    let x = event.touches[0].clientX;
+    let y = event.touches[0].clientY;
+    let selectedDiv = document.elementFromPoint(x, y);
+    if (selectedDiv.tagName != "DIV") {
+        element.removeEventListener("touchmove", (evento));
+    }
+    else if (selectedDiv.parentElement.id == "divcontainer") {
+        changeColor(selectedDiv);
+    }
+    })
+}); */

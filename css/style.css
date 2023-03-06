@@ -6,11 +6,16 @@
 }
 
 :root {
-  --gridsize: min(70vw, 70vh);
+  --gridsize: min(90vw, 90vh);
   --gridsquare: 16;
   --bgcolor: rgb(32, 32, 32);
 }
 
+@media screen and (min-width: 768px) {
+  :root {
+    --gridsize: min(70vw, 70vh);
+  }
+}
 body {
   color: white;
   display: -webkit-box;
@@ -28,8 +33,12 @@ body {
           flex-direction: column;
   background-color: var(--bgcolor);
   font-family: Arial, Helvetica, sans-serif;
-  -ms-touch-action: none;
-      touch-action: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
 }
 
 input[type=text], button {
