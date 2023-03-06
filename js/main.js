@@ -59,6 +59,15 @@ divContainer.addEventListener("touchmove", (event)=>{
         changeColor(selectedDiv);
     }
 }, false)
+divContainer.addEventListener("touchstart", (event)=>{
+    event.preventDefault();
+    let x = event.touches[0].clientX;
+    let y = event.touches[0].clientY;
+    let selectedDiv = document.elementFromPoint(x, y);
+    if (selectedDiv != null && selectedDiv.parentElement.id == "divcontainer") {
+        changeColor(selectedDiv);
+    }
+}, false)
 
 
 
