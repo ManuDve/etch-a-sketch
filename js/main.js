@@ -56,7 +56,6 @@ function createGrid(size) {
         const div = document.createElement("div")
         divContainer.appendChild(div); 
         paintGrid(div);
-        console.log(div)      
     }
 }
 
