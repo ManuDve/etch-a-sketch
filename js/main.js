@@ -43,6 +43,9 @@ function updateGridPlaceholder() {
 
 
 function paintGrid(e) {
+    e.addEventListener("mousedown", ()=> {
+        changeColor(e);
+    }, false)
     e.addEventListener("mouseenter", ()=> {
         if (mouseDown) {
             changeColor(e);
