@@ -16,7 +16,7 @@ function changeColor(elemento) {
 }
 
 function changeGridSize() {
-    if (isNaN(inputGrid.value) || !inputGrid.value ||  inputGrid.value>128 || inputGrid.value<1) {
+    if (isNaN(inputGrid.value) || !inputGrid.value ||  inputGrid.value>128 || inputGrid.value<1 || Number.isInteger(inputGrid)) {
         alert("Enter a number between 1 and 100!");
     } else {
         deleteGrid();
@@ -44,6 +44,7 @@ function updateGridPlaceholder() {
 
 function paintGrid(e) {
     e.addEventListener("mousedown", ()=> {
+        actualColor = inputColor.value;
         changeColor(e);
     }, false)
     e.addEventListener("mouseenter", ()=> {

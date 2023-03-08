@@ -41,7 +41,7 @@ body {
       touch-action: manipulation;
 }
 
-input[type=text], button {
+input[type=text], input[type=number], button {
   all: unset;
 }
 
@@ -77,7 +77,7 @@ input[type=text], button {
   text-align: center;
   margin-bottom: 1em;
 }
-#menu input[type=text] {
+#menu input[type=text], #menu input[type=number] {
   font-size: 0.8rem;
   color: white;
   margin: 1em;
