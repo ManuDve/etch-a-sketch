@@ -5,6 +5,10 @@ const inputColor = document.querySelector("#input-color")
 let root = document.documentElement;
 let gridSize = 16;
 let actualColor = inputColor.value;
+// Implementar herramienta de borrar
+let previousColor;
+let mouseDown = false;
+
 
 
 function changeColor(elemento) {
@@ -12,8 +16,8 @@ function changeColor(elemento) {
 }
 
 function changeGridSize() {
-    if (isNaN(inputGrid.value) || !inputGrid.value ) {
-        alert("Enter a number!");
+    if (isNaN(inputGrid.value) || !inputGrid.value ||  inputGrid.value>128) {
+        alert("Enter a number below 100!");
     } else {
         deleteGrid();
         gridSize = inputGrid.value;
@@ -37,18 +41,30 @@ function updateGridPlaceholder() {
     inputGrid.value = "";
 }
 
-// Event Listeners
+
+function paintGrid(e) {
+    e.addEventListener("mouseenter", ()=> {
+        if (mouseDown) {
+            changeColor(e);
+        }
+        }, false)
+}
+
 
 function createGrid(size) {
     for (let i = 0; i<size*size; i++) {
         const div = document.createElement("div")
-        divContainer.appendChild(div);
-        div.addEventListener("mouseenter", ()=> {
-            changeColor(div);
-        }, false)
-        
+        divContainer.appendChild(div); 
+        paintGrid(div);
+        console.log(div)      
     }
 }
+
+// Event Listeners
+
+
+document.addEventListener("mousedown", ()=> {mouseDown = true;})
+document.addEventListener("mouseup", ()=> {mouseDown = false;})
 
 divContainer.addEventListener("touchmove", (event)=>{
     event.preventDefault();
@@ -69,8 +85,6 @@ divContainer.addEventListener("touchstart", (event)=>{
     }
 }, false)
 
-
-
 button.addEventListener("click", changeGridSize)
 inputColor.addEventListener("change", pickColor)
 
@@ -79,9 +93,7 @@ inputColor.addEventListener("change", pickColor)
 
 createGrid(gridSize);
 updateGridPlaceholder();
-document.ondblclick = function(e) {
-    e.preventDefault();
-}
+document.ondblclick = function(e) {e.preventDefault();}
 
 /* divContainer.childNodes.forEach(element => {
     element.addEventListener("touchmove", function evento(event) {
