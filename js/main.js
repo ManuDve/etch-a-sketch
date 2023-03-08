@@ -16,8 +16,8 @@ function changeColor(elemento) {
 }
 
 function changeGridSize() {
-    if (isNaN(inputGrid.value) || !inputGrid.value ||  inputGrid.value>128) {
-        alert("Enter a number below 100!");
+    if (isNaN(inputGrid.value) || !inputGrid.value ||  inputGrid.value>128 || inputGrid.value<1) {
+        alert("Enter a number between 1 and 100!");
     } else {
         deleteGrid();
         gridSize = inputGrid.value;
