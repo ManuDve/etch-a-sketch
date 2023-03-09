@@ -63,24 +63,19 @@ function createGrid(size) {
 }
 
 function changeGridSize() {
+    gridSize = inputGrid.value;
+    deleteGrid();
+    root.style.setProperty("--gridsquare", gridSize);
+    createGrid(gridSize); 
     gridResult.textContent = inputGrid.value + ` x ${inputGrid.value}`;
-    inputGrid.addEventListener("input", ()=>{
-        gridSize = inputGrid.value;
-        gridResult.textContent = inputGrid.value + ` x ${inputGrid.value}` ;
-    })
 }
 
 // Event Listeners
 
-inputGrid.addEventListener("input", ()=>{
-    deleteGrid();
-    createGrid(gridSize);
-    root.style.setProperty("--gridsquare", gridSize);
-    changeGridSize();
-})
-
 document.addEventListener("mousedown", ()=> {mouseDown = true;})
 document.addEventListener("mouseup", ()=> {mouseDown = false;})
+inputGrid.addEventListener("input", ()=>{changeGridSize();})
+
 
 divContainer.addEventListener("touchmove", (event)=>{
     event.preventDefault();
@@ -108,7 +103,6 @@ inputColor.addEventListener("change", pickColor)
 // Init Functions
 
 createGrid(gridSize);
-changeGridSize()
 /* updateGridPlaceholder();
  */
 document.ondblclick = function(e) {e.preventDefault();}
