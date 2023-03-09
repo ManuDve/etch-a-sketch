@@ -1,7 +1,7 @@
 const divContainer = document.querySelector("#divcontainer");
 const inputGrid = document.querySelector("#input-grid");
-const button = document.querySelector("#send-button");
 const inputColor = document.querySelector("#input-color")
+const gridResult = document.querySelector("#grid-result")
 let root = document.documentElement;
 let gridSize = 16;
 let actualColor = inputColor.value;
@@ -15,7 +15,7 @@ function changeColor(elemento) {
     elemento.style.backgroundColor = actualColor;
 }
 
-function changeGridSize() {
+/* function changeGridSize() {
     if (isNaN(inputGrid.value) || !inputGrid.value ||  inputGrid.value>128 || inputGrid.value<1 || Number.isInteger(inputGrid)) {
         alert("Enter a number between 1 and 100!");
     } else {
@@ -26,7 +26,9 @@ function changeGridSize() {
         createGrid(gridSize);
     }
     
-}
+} */
+
+
 
 function pickColor() {
     actualColor = inputColor.value;
@@ -36,10 +38,7 @@ function deleteGrid() {
         divContainer.replaceChildren();
 }
 
-function updateGridPlaceholder() {
-    inputGrid.placeholder = "Grid Size: " + gridSize;
-    inputGrid.value = "";
-}
+
 
 
 function paintGrid(e) {
@@ -63,8 +62,22 @@ function createGrid(size) {
     }
 }
 
+function changeGridSize() {
+    gridResult.textContent = inputGrid.value + ` x ${inputGrid.value}`;
+    inputGrid.addEventListener("input", ()=>{
+        gridSize = inputGrid.value;
+        gridResult.textContent = inputGrid.value + ` x ${inputGrid.value}` ;
+    })
+}
+
 // Event Listeners
 
+inputGrid.addEventListener("input", ()=>{
+    deleteGrid();
+    createGrid(gridSize);
+    root.style.setProperty("--gridsquare", gridSize);
+    changeGridSize();
+})
 
 document.addEventListener("mousedown", ()=> {mouseDown = true;})
 document.addEventListener("mouseup", ()=> {mouseDown = false;})
@@ -88,14 +101,16 @@ divContainer.addEventListener("touchstart", (event)=>{
     }
 }, false)
 
-button.addEventListener("click", changeGridSize)
+/* button.addEventListener("click", changeGridSize)*/
 inputColor.addEventListener("change", pickColor)
 
 
 // Init Functions
 
 createGrid(gridSize);
-updateGridPlaceholder();
+changeGridSize()
+/* updateGridPlaceholder();
+ */
 document.ondblclick = function(e) {e.preventDefault();}
 
 /* divContainer.childNodes.forEach(element => {

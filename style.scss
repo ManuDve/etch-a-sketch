@@ -1,0 +1,200 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+:root {
+    --gridsize: min(90vw, 90vh);
+    --gridsquare: 16;
+    --bgcolor: rgb(32, 32, 32);
+}
+
+@media screen and (min-width:768px) {
+    :root {
+        --gridsize: min(70vw, 70vh);
+    }
+}
+
+$green: #03ffbc;
+$time: 500ms;
+
+body {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--bgcolor);
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+input[type="text"], button {
+    all: unset;
+}
+
+#menu {
+    margin: 1em 2em;
+    animation: fadeInTop $time backwards;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        display: block;
+        font-size: 2.5rem;
+        text-align: center;
+        width: 100%;
+        color: $green;
+        font-family: 'Tilt Neon', cursive;
+    }
+    
+    h2 {
+        margin-bottom: 1em;
+        display: block;
+        width: 100%;
+        font-size: 0.9rem;
+        text-align: center;
+    }
+    input[type="text"] {
+        font-size: 0.8rem;
+        color: white;
+        margin: 1em;
+        height: 1em;
+        padding: 5px;
+        border-bottom: 1px solid white;
+        text-align: center;
+    }
+
+    #toolswrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+
+    }
+
+    #rangecontainer {
+        width: 120px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    input[type="range"] {
+        appearance: none;
+        margin: 0.5em 0;
+        width: 100%;
+        height: 4px;
+        background: $green;
+        border-radius: 5px;
+        box-sizing: border-box;
+
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            background: white;
+            cursor: ew-resize;
+            transition: background .3s ease-in-out;
+          }
+        
+    }
+
+    #grid-result {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+    } 
+    
+    button {
+        transition: $time;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        font-weight: 300;
+        border: 1px solid white;
+        height: 1em;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover {
+            color: $green;
+            border: $green 1px solid;
+            transform: scale(1.05);
+        }
+    }
+
+    .colorwrapper {
+        touch-action: none;
+        border: 2px solid $green;
+        transform: $time;
+        width: 2em;
+        height: 2em;
+        border-radius: 100%;
+        overflow: hidden;
+        &:hover {
+            transform: scale(1.05);
+        }
+
+    }
+    
+    input[type="color"] {
+        
+        background-color: transparent;
+        height: 200%;
+        width: 200%;
+        transform: translate(-25%, -25%);
+        cursor: pointer;
+        
+
+    }
+}
+
+.containerwrapper {
+    animation: fadeInBottom $time backwards $time;
+    border: 1px solid white;
+}
+
+
+
+#divcontainer {
+    width: calc(var(--gridsize));
+    height: calc(var(--gridsize));
+    display: flex;
+    flex-wrap: wrap;
+
+    div {
+        box-sizing: border-box;
+        height: calc(var(--gridsize)/var(--gridsquare));
+        width: calc(var(--gridsize)/var(--gridsquare));
+        
+    }
+    
+}
+
+
+@keyframes fadeInTop {
+    0% {
+        transform: translateY(-300px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+@keyframes fadeInBottom {
+    0% {
+        transform: translateY(300px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

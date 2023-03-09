@@ -17,11 +17,15 @@
     <section id="menu">
         <h1>Etch a Sketch!</h1>
         <h2>Pick a Color or Enter your Grid Size!</h2>
-        <div>
-            <input type="color" name="color-picker" id="input-color" value="#FFFFFF"></div>
-            <input id="input-grid" type="text" pattern="\d*" placeholder="">
-        <button id="send-button">Change Grid</button>
-        
+        <div id="toolswrapper">
+            <div class="colorwrapper">
+                <input type="color" name="color-picker" id="input-color" value="#FFFFFF">
+            </div>
+            <div id="rangecontainer">
+                <div id="grid-result"></div>
+                <input type="range" name="" id="input-grid" min="8" max="64" step="8" value="16">
+            </div>
+        </div>
     </section>
     <div class="containerwrapper"><section id="divcontainer">
     </section></div>
