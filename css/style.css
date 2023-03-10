@@ -30,7 +30,7 @@ input[type=text], button {
 }
 
 #menu {
-  margin: 1em 2em;
+  margin: 1em 1em 2em 1em;
   animation: fadeInTop 500ms backwards;
   width: 100%;
   display: flex;
@@ -53,7 +53,7 @@ input[type=text], button {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
   display: block;
   width: 100%;
   font-size: 0.9rem;
@@ -146,11 +146,29 @@ input[type=text], button {
 }
 
 .containerwrapper {
+  margin: auto;
   animation: fadeInBottom 500ms backwards 500ms;
   border: 1px solid white;
 }
 
+#cursor {
+  border: 1px solid white;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  width: calc(var(--gridsize) / var(--gridsquare));
+  height: calc(var(--gridsize) / var(--gridsquare));
+}
+
+.sectioncontainer {
+  width: 100%;
+}
+
 #divcontainer {
+  cursor: none;
   width: calc(var(--gridsize));
   height: calc(var(--gridsize));
   display: flex;
@@ -166,6 +184,36 @@ input[type=text], button {
   box-sizing: border-box;
   height: calc(var(--gridsize) / var(--gridsquare));
   width: calc(var(--gridsize) / var(--gridsquare));
+}
+
+#tools {
+  animation: fadeInBottom 500ms backwards 800ms;
+  margin-top: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  user-drag: none;
+  gap: 2em;
+}
+#tools svg {
+  transition: 500ms;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  width: 30px;
+  height: 30px;
+  fill: white;
+}
+#tools svg:hover {
+  transform: scale(1.1);
 }
 
 @keyframes fadeInTop {

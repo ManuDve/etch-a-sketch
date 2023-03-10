@@ -2,11 +2,10 @@ const divContainer = document.querySelector("#divcontainer");
 const inputGrid = document.querySelector("#input-grid");
 const inputColor = document.querySelector("#input-color")
 const gridResult = document.querySelector("#grid-result")
+const wrapperContainer = document.querySelector(".containerwrapper")
 let root = document.documentElement;
 let gridSize = 16;
 let actualColor = inputColor.value;
-// Implementar herramienta de borrar
-let previousColor;
 let mouseDown = false;
 
 
@@ -15,31 +14,14 @@ function changeColor(elemento) {
     elemento.style.backgroundColor = actualColor;
 }
 
-/* function changeGridSize() {
-    if (isNaN(inputGrid.value) || !inputGrid.value ||  inputGrid.value>128 || inputGrid.value<1 || Number.isInteger(inputGrid)) {
-        alert("Enter a number between 1 and 100!");
-    } else {
-        deleteGrid();
-        gridSize = inputGrid.value;
-        root.style.setProperty("--gridsquare", gridSize);
-        updateGridPlaceholder();
-        createGrid(gridSize);
-    }
-    
-} */
-
-
-
 function pickColor() {
     actualColor = inputColor.value;
+    cursor.style.backgroundColor = actualColor;
 }
 
 function deleteGrid() {
         divContainer.replaceChildren();
 }
-
-
-
 
 function paintGrid(e) {
     e.addEventListener("mousedown", ()=> {
@@ -70,6 +52,8 @@ function changeGridSize() {
     gridResult.textContent = inputGrid.value + ` x ${inputGrid.value}`;
 }
 
+
+
 // Event Listeners
 
 document.addEventListener("mousedown", ()=> {mouseDown = true;})
@@ -96,28 +80,60 @@ divContainer.addEventListener("touchstart", (event)=>{
     }
 }, false)
 
-/* button.addEventListener("click", changeGridSize)*/
-inputColor.addEventListener("change", pickColor)
+inputColor.addEventListener("input", ()=>{
+    pickColor();
+    previousColor = inputColor.value;
+})
+
+
+// Square Follow Mouse
+
+let cursor = document.getElementById("cursor");
+console.log(cursor)
+
+document.addEventListener("mousemove", (e)=>{
+    cursor.style.top = e.pageY + 'px';
+    cursor.style.left = e.pageX + 'px';
+})
+
+wrapperContainer.addEventListener("mouseenter", ()=>{
+    cursor.hidden = false;
+}, false)
+
+wrapperContainer.addEventListener("mouseleave", ()=>{
+    cursor.hidden = true;
+}, false)
+
+// Pen and Eraser
+
+const pen = document.getElementById("pen");
+const eraser = document.getElementById("eraser");
+penStatus = true;
+eraserStatus = false;
+let previousColor = "#ffffff";
+
+pen.addEventListener("click", ()=>{
+    penStatus = true;
+    eraserStatus = false;
+    pen.style.fill = "#03ffbc";
+    eraser.style.fill = "white";
+    inputColor.value = previousColor;
+    pickColor();
+})
+
+eraser.addEventListener("click", ()=>{
+    penStatus = false;
+    eraserStatus = true;
+    eraser.style.fill = "#03ffbc";
+    pen.style.fill = "white";
+    inputColor.value = "#202020";
+    pickColor();
+    
+})
 
 
 // Init Functions
 
 createGrid(gridSize);
-/* updateGridPlaceholder();
- */
 document.ondblclick = function(e) {e.preventDefault();}
 
-/* divContainer.childNodes.forEach(element => {
-    element.addEventListener("touchmove", function evento(event) {
-    event.preventDefault();
-    let x = event.touches[0].clientX;
-    let y = event.touches[0].clientY;
-    let selectedDiv = document.elementFromPoint(x, y);
-    if (selectedDiv.tagName != "DIV") {
-        element.removeEventListener("touchmove", (evento));
-    }
-    else if (selectedDiv.parentElement.id == "divcontainer") {
-        changeColor(selectedDiv);
-    }
-    })
-}); */
