@@ -1,6 +1,7 @@
 # Etch a Sketch!
 "The Odin Project" Project done by the following requirements on their website with small adjustments.
 
+* v1.2 Adds Pen and Eraser tool, along with a cursor for Desktop
 * v1.1 Adds Desktop and Mobile functionality, click and validation bug fixes
 * v1.0 Initial requirements
 
