@@ -1,14 +1,13 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :root {
   --gridsize: min(90vw, 90vh);
   --gridsquare: 16;
-  --bgcolor: rgb(32, 32, 32);
+  --bgcolor: #202020;
 }
 
 @media screen and (min-width: 768px) {
@@ -18,19 +17,10 @@
 }
 body {
   color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background-color: var(--bgcolor);
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -41,22 +31,17 @@ input[type=text], button {
 
 #menu {
   margin: 1em 2em;
-  -webkit-animation: fadeInTop 500ms backwards;
-          animation: fadeInTop 500ms backwards;
+  animation: fadeInTop 500ms backwards;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 #menu h1 {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   display: block;
   font-size: 2.5rem;
   text-align: center;
@@ -65,6 +50,9 @@ input[type=text], button {
   font-family: "Tilt Neon", cursive;
 }
 #menu h2 {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   margin-bottom: 1em;
   display: block;
   width: 100%;
@@ -81,27 +69,16 @@ input[type=text], button {
   text-align: center;
 }
 #menu #toolswrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   gap: 2em;
 }
 #menu #rangecontainer {
   width: 120px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 #menu input[type=range] {
   -webkit-appearance: none;
@@ -112,8 +89,7 @@ input[type=text], button {
   height: 4px;
   background: #03ffbc;
   border-radius: 5px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 #menu input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -126,11 +102,13 @@ input[type=text], button {
   transition: background 0.3s ease-in-out;
 }
 #menu #grid-result {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   font-size: 0.7rem;
   text-transform: uppercase;
 }
 #menu button {
-  -webkit-transition: 500ms;
   transition: 500ms;
   font-size: 0.7rem;
   text-transform: uppercase;
@@ -144,101 +122,69 @@ input[type=text], button {
 #menu button:hover {
   color: #03ffbc;
   border: #03ffbc 1px solid;
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+  transform: scale(1.05);
 }
 #menu .colorwrapper {
-  -ms-touch-action: none;
-      touch-action: none;
+  touch-action: none;
   border: 2px solid #03ffbc;
-  -webkit-transform: 500ms;
-          transform: 500ms;
+  transform: 500ms;
   width: 2em;
   height: 2em;
   border-radius: 100%;
   overflow: hidden;
 }
 #menu .colorwrapper:hover {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+  transform: scale(1.05);
 }
 #menu input[type=color] {
+  -webkit-user-drag: none;
   background-color: transparent;
   height: 200%;
   width: 200%;
-  -webkit-transform: translate(-25%, -25%);
-          transform: translate(-25%, -25%);
+  transform: translate(-25%, -25%);
   cursor: pointer;
 }
 
 .containerwrapper {
-  -webkit-animation: fadeInBottom 500ms backwards 500ms;
-          animation: fadeInBottom 500ms backwards 500ms;
+  animation: fadeInBottom 500ms backwards 500ms;
   border: 1px solid white;
 }
 
 #divcontainer {
   width: calc(var(--gridsize));
   height: calc(var(--gridsize));
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 #divcontainer div {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  box-sizing: border-box;
   height: calc(var(--gridsize) / var(--gridsquare));
   width: calc(var(--gridsize) / var(--gridsquare));
 }
 
-@-webkit-keyframes fadeInTop {
-  0% {
-    -webkit-transform: translateY(-300px);
-            transform: translateY(-300px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-    opacity: 1;
-  }
-}
-
 @keyframes fadeInTop {
   0% {
-    -webkit-transform: translateY(-300px);
-            transform: translateY(-300px);
+    transform: translateY(-300px);
     opacity: 0;
   }
   100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-    opacity: 1;
-  }
-}
-@-webkit-keyframes fadeInBottom {
-  0% {
-    -webkit-transform: translateY(300px);
-            transform: translateY(300px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
     opacity: 1;
   }
 }
 @keyframes fadeInBottom {
   0% {
-    -webkit-transform: translateY(300px);
-            transform: translateY(300px);
+    transform: translateY(300px);
     opacity: 0;
   }
   100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
     opacity: 1;
   }
 }/*# sourceMappingURL=style.css.map */

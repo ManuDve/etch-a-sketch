@@ -8,7 +8,7 @@
 :root {
     --gridsize: min(90vw, 90vh);
     --gridsquare: 16;
-    --bgcolor: rgb(32, 32, 32);
+    --bgcolor: #202020;
 }
 
 @media screen and (min-width:768px) {
@@ -44,6 +44,7 @@ input[type="text"], button {
     justify-content: center;
     align-items: center;
     h1 {
+        user-select: none;
         display: block;
         font-size: 2.5rem;
         text-align: center;
@@ -53,6 +54,7 @@ input[type="text"], button {
     }
     
     h2 {
+        user-select: none;
         margin-bottom: 1em;
         display: block;
         width: 100%;
@@ -106,6 +108,7 @@ input[type="text"], button {
     }
 
     #grid-result {
+        user-select: none;
         font-size: 0.7rem;
         text-transform: uppercase;
     } 
@@ -142,7 +145,7 @@ input[type="text"], button {
     }
     
     input[type="color"] {
-        
+        -webkit-user-drag: none;
         background-color: transparent;
         height: 200%;
         width: 200%;
@@ -165,8 +168,9 @@ input[type="text"], button {
     height: calc(var(--gridsize));
     display: flex;
     flex-wrap: wrap;
-
+    user-select: none;
     div {
+        user-select: none;
         box-sizing: border-box;
         height: calc(var(--gridsize)/var(--gridsquare));
         width: calc(var(--gridsize)/var(--gridsquare));
